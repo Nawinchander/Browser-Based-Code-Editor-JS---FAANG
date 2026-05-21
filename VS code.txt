@@ -1,0 +1,34 @@
+This project simulates a lightweight version of:
+
+Visual Studio Code
+Monaco Editor
+
+You’ll learn:
+
+Virtual DOM
+Incremental rendering
+AST parsing
+Syntax highlighting
+State management
+Event system
+Search indexing
+Performance optimization
+Web Workers
+File system architecture
+Frontend system design
+
+
+| Layer               | Technology          |
+| ------------------- | ------------------- |
+| Frontend            | Vanilla JavaScript  |
+| Bundler             | Vite                |
+| Editor Rendering    | Custom DOM renderer |
+| Parsing             | Acorn               |
+| Syntax Highlighting | PrismJS             |
+| Search Indexing     | FlexSearch          |
+| State Management    | Custom Store        |
+| Worker Threads      | Web Workers         |
+| Storage             | IndexedDB           |
+| Styling             | CSS Modules         |
+
+
