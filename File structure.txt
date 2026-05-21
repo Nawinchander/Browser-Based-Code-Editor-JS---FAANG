@@ -1,0 +1,45 @@
+mini-vscode/
+│
+├── public/
+│
+├── src/
+│   ├── core/
+│   │   ├── editor/
+│   │   ├── renderer/
+│   │   ├── parser/
+│   │   ├── tokenizer/
+│   │   ├── diff/
+│   │   └── virtual-dom/
+│   │
+│   ├── components/
+│   │   ├── editor-pane/
+│   │   ├── tabs/
+│   │   ├── explorer/
+│   │   ├── command-palette/
+│   │   └── search-panel/
+│   │
+│   ├── store/
+│   │   ├── store.js
+│   │   ├── reducers/
+│   │   └── actions/
+│   │
+│   ├── workers/
+│   │   ├── parser.worker.js
+│   │   └── search.worker.js
+│   │
+│   ├── services/
+│   │   ├── search-index.js
+│   │   ├── file-system.js
+│   │   └── theme-service.js
+│   │
+│   ├── utils/
+│   │
+│   ├── styles/
+│   │
+│   ├── App.js
+│   └── main.js
+│
+├── package.json
+└── vite.config.js
+
+
