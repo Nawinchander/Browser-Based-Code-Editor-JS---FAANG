@@ -32,3 +32,22 @@ Frontend system design
 | Styling             | CSS Modules         |
 
 
+Syntax Highlighting
+
+
+Why?
+
+Editors don’t store colors directly.
+
+They:
+
+Code
+↓
+Tokenizer
+↓
+Tokens
+↓
+Theme Mapping
+↓
+Rendered Colors
+
