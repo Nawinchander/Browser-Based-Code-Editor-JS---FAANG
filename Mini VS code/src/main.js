@@ -1,4 +1,4 @@
-import './style.css'
+import app from './styles'
 // import javascriptLogo from './assets/javascript.svg'
 // import viteLogo from './assets/vite.svg'
 // import heroImg from './assets/hero.png'
@@ -8,7 +8,6 @@ import { App } from './App';
 
 
 document.querySelector('#app').innerHTML = App();
-
 // <section id="center">
 //   <div class="hero">
 //     <img src="${heroImg}" class="base" width="170" height="179">
