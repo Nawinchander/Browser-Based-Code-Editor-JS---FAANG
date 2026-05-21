@@ -1,0 +1,11 @@
+Build Virtual DOM
+Why Virtual DOM?
+
+Without optimization:
+
+Every key press
+→ Entire editor rerenders
+
+Huge performance issue.
+
+
