@@ -20,3 +20,17 @@ Recently used commands
 Prefix matches
 
 
+Why Trie?
+
+Efficient:
+
+Prefix search
+Autocomplete
+Suggestions
+
+Used in:
+
+Visual Studio Code
+Google search systems
+
+
