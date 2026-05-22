@@ -1,0 +1,29 @@
+File Click
+   ↓
+Dispatch OPEN_TAB
+   ↓
+Reducer Updates State
+   ↓
+Tabs Component Re-renders
+   ↓
+Editor Loads File Content
+
+
+| Layer    | Purpose           |
+| -------- | ----------------- |
+| UI       | Rendering         |
+| Store    | State             |
+| Actions  | Events            |
+| Services | Business Logic    |
+| Reducers | State transitions |
+
+
+This mirrors architectures used in:
+
+Meta frontend apps
+Google editors
+Microsoft IDE systems
+
+
+
+
