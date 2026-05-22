@@ -43,3 +43,13 @@ mini-vscode/
 └── vite.config.js
 
 
+src/
+│
+├── components/
+│   ├── explorer/
+│   │   ├── explorer.js
+│   │   ├── explorer.css
+│   │   ├── file-tree.js
+│   │   ├── tree-renderer.js
+│   │   └── explorer-events.js
+
