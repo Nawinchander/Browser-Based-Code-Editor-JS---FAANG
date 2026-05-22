@@ -10,3 +10,14 @@ New Tree
 
 Apply minimal DOM updates.
 
+Complexity
+
+Naive diff:
+
+O(n^3)
+
+Optimized heuristic diff:
+
+O(n)
+
+
