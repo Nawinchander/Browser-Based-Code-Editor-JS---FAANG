@@ -12,3 +12,19 @@ Regex search:
 
 O(n×m)
 
+Why Separate Registry?
+
+Because later you can support:
+
+Plugins
+Extensions
+Dynamic commands
+Lazy loading
+
+Exactly how:
+
+Visual Studio Code
+Sublime Text
+
+internally register command
+
