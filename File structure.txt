@@ -80,3 +80,51 @@ src/
 │
 ├── services/
 │   └── tab-service.js
+
+
+
+
+
+
+src/
+│
+├── components/
+│   ├── command-palette/
+│   │   ├── command-palette.js
+│   │   ├── command-item.js
+│   │   ├── command-palette.css
+│   │   ├── command-events.js
+│   │   └── command-shortcuts.js
+│
+├── core/
+│   ├── fuzzy-search/
+│   │   ├── fuzzy-match.js
+│   │   ├── ranking.js
+│   │   └── trie.js
+│
+├── services/
+│   ├── command-registry.js
+│   └── command-service.js
+│
+├── store/
+│   ├── reducers/
+│   │   └── command-palette-reducer.js
+│   │
+│   └── actions/
+│       └── command-palette-actions.js
+
+
+
+| Module               | Responsibility           |
+| -------------------- | ------------------------ |
+| command-palette.js   | Main palette UI          |
+| command-item.js      | Single command row       |
+| command-events.js    | Click events             |
+| command-shortcuts.js | Ctrl+Shift+P             |
+| fuzzy-match.js       | Matching logic           |
+| ranking.js           | Search ranking           |
+| trie.js              | Fast search optimization |
+| command-registry.js  | All commands             |
+| reducer              | State management         |
+
+
