@@ -1,0 +1,14 @@
+Complexity
+
+Indexing:
+
+O(n)
+
+Search lookup:
+
+O(1)
+
+Regex search:
+
+O(n×m)
+
