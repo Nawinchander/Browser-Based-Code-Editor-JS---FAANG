@@ -8,3 +8,15 @@ Where:
 
 n = command count
 m = string length
+
+
+
+Why Ranking?
+
+Because real IDEs prioritize:
+
+Exact matches
+Recently used commands
+Prefix matches
+
+
