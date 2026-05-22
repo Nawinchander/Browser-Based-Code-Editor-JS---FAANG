@@ -1,0 +1,12 @@
+Diffing Algorithm
+
+Core FAANG Topic
+
+Compare:
+
+Old Tree
+vs
+New Tree
+
+Apply minimal DOM updates.
+
