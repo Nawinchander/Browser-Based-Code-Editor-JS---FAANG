@@ -1,0 +1,10 @@
+Complexity
+
+Basic fuzzy search:
+
+O(n×m)
+
+Where:
+
+n = command count
+m = string length
