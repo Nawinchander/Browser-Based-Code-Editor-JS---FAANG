@@ -1,0 +1,31 @@
+src/
+│
+├── components/
+│   ├── tabs/
+│   │   ├── tabs.js
+│   │   ├── tab-item.js
+│   │   ├── tabs.css
+│   │   └── tabs-events.js
+│
+├── store/
+│   ├── store.js
+│   ├── reducers/
+│   │   └── tabs-reducer.js
+│   │
+│   └── actions/
+│       └── tabs-actions.js
+│
+├── services/
+│   └── tab-service.js
+
+
+| File              | Responsibility            |
+| ----------------- | ------------------------- |
+| `tabs.js`         | Render all tabs           |
+| `tab-item.js`     | Single tab UI             |
+| `tabs-events.js`  | Click/close events        |
+| `tabs-actions.js` | Open/close/switch actions |
+| `tabs-reducer.js` | Tab state updates         |
+| `tab-service.js`  | Business logic            |
+
+

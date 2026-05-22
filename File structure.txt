@@ -43,6 +43,10 @@ mini-vscode/
 └── vite.config.js
 
 
+
+... /// file tree
+
+
 src/
 │
 ├── components/
@@ -53,3 +57,26 @@ src/
 │   │   ├── tree-renderer.js
 │   │   └── explorer-events.js
 
+
+
+//// MUlti tab
+
+src/
+│
+├── components/
+│   ├── tabs/
+│   │   ├── tabs.js
+│   │   ├── tab-item.js
+│   │   ├── tabs.css
+│   │   └── tabs-events.js
+│
+├── store/
+│   ├── store.js
+│   ├── reducers/
+│   │   └── tabs-reducer.js
+│   │
+│   └── actions/
+│       └── tabs-actions.js
+│
+├── services/
+│   └── tab-service.js
