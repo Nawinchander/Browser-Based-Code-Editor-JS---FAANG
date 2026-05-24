@@ -1,0 +1,26 @@
+Why Reducer?
+
+Because theme changes affect:
+
+Entire app
+Shared UI state
+Multiple components
+Interview Questions — Themes
+Q1. Why centralize themes?
+Answer
+Avoids inconsistent UI styling.
+
+Single source of truth improves:
+
+Maintainability
+Dynamic switching
+Performance
+Q2. Why CSS variables?
+Answer
+
+CSS variables allow:
+
+Runtime updates
+Minimal repaint
+Theme swapping without rerendering
+
