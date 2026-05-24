@@ -1,0 +1,49 @@
+Important Interview Questions
+1. Why use Trie in command palettes?
+Answer
+
+Trie enables:
+
+Fast prefix lookup
+Autocomplete
+Efficient search suggestions
+
+Complexity:
+
+O(k)
+
+Where:
+
+k = query length
+2. Why separate registry from UI?
+Answer
+
+Because commands are business logic, not presentation.
+
+This allows:
+
+Plugins
+Extension systems
+Dynamic loading
+Testing
+3. How does VS Code optimize command search?
+Answer
+
+Using:
+
+Indexed command registry
+Fuzzy matching
+Ranking heuristics
+Caching
+Lazy rendering
+4. Why use reducers for palette state?
+Answer
+
+Because palette state is shared across:
+
+UI
+Keyboard listeners
+Search engine
+Extensions
+
+Centralized state prevents inconsistencies.
