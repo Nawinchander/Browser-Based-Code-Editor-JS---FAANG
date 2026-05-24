@@ -7,3 +7,16 @@ export function parse(code) {
   });
 }
 
+/// AST Parsing
+
+// Why AST?
+
+// Needed for:
+
+// IntelliSense
+// Auto-complete
+// Error detection
+// Rename symbol
+// Refactoring
+
+
