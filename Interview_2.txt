@@ -1,0 +1,22 @@
+Interview Questions — Incremental Rendering
+Q1. Why not render all lines?
+Answer
+
+Large DOM trees:
+
+Increase memory usage
+Slow layout calculations
+Cause FPS drops
+
+Virtualization reduces DOM nodes drastically.
+
+Q2. Complexity Improvement?
+
+Without virtualization:
+
+O(n)
+
+With viewport rendering:
+
+O(v)
+
