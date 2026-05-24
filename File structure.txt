@@ -128,3 +128,37 @@ src/
 | reducer              | State management         |
 
 
+
+
+
+src/
+│
+├── core/
+│   ├── renderer/
+│   │   ├── incremental-renderer.js
+│   │   ├── viewport-manager.js
+│   │   ├── line-cache.js
+│   │   └── render-engine.js
+│
+├── services/
+│   ├── autosave-service.js
+│   ├── debounce.js
+│   ├── theme-service.js
+│   ├── indexeddb-service.js
+│   └── persistence-service.js
+│
+├── store/
+│   ├── reducers/
+│   │   ├── theme-reducer.js
+│   │   └── editor-reducer.js
+│
+├── themes/
+│   ├── dark-theme.js
+│   └── light-theme.js
+│
+├── workers/
+│   └── persistence.worker.js
+
+
+
+
