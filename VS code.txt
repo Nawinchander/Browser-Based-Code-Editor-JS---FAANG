@@ -118,6 +118,17 @@ Only changed subtree updates
 Huge performance gain.
 
 
+| Feature         | DS Used            |
+| --------------- | ------------------ |
+| File Explorer   | Tree               |
+| Search          | Inverted Index     |
+| Undo/Redo       | Stack              |
+| Tabs            | Array + Map        |
+| Editor Buffer   | Rope / Piece Table |
+| Command Palette | Trie               |
+| Event System    | Observer Pattern   |
+
+
 
 
 

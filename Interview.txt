@@ -1,3 +1,730 @@
+Browser-Based Code Editor (Mini VS Code) — FAANG-Level Project (JavaScript)
+
+This project simulates a lightweight version of:
+
+Visual Studio Code
+Monaco Editor
+
+You’ll learn:
+
+Virtual DOM
+Incremental rendering
+AST parsing
+Syntax highlighting
+State management
+Event system
+Search indexing
+Performance optimization
+Web Workers
+File system architecture
+Frontend system design
+Tech Stack
+Layer	Technology
+Frontend	Vanilla JavaScript
+Bundler	Vite
+Editor Rendering	Custom DOM renderer
+Parsing	Acorn
+Syntax Highlighting	PrismJS
+Search Indexing	FlexSearch
+State Management	Custom Store
+Worker Threads	Web Workers
+Storage	IndexedDB
+Styling	CSS Modules
+Final Architecture
+4
+mini-vscode/
+│
+├── public/
+│
+├── src/
+│   ├── core/
+│   │   ├── editor/
+│   │   ├── renderer/
+│   │   ├── parser/
+│   │   ├── tokenizer/
+│   │   ├── diff/
+│   │   └── virtual-dom/
+│   │
+│   ├── components/
+│   │   ├── editor-pane/
+│   │   ├── tabs/
+│   │   ├── explorer/
+│   │   ├── command-palette/
+│   │   └── search-panel/
+│   │
+│   ├── store/
+│   │   ├── store.js
+│   │   ├── reducers/
+│   │   └── actions/
+│   │
+│   ├── workers/
+│   │   ├── parser.worker.js
+│   │   └── search.worker.js
+│   │
+│   ├── services/
+│   │   ├── search-index.js
+│   │   ├── file-system.js
+│   │   └── theme-service.js
+│   │
+│   ├── utils/
+│   │
+│   ├── styles/
+│   │
+│   ├── App.js
+│   └── main.js
+│
+├── package.json
+└── vite.config.js
+Step 1 — Project Setup
+Install Vite
+npm create vite@latest mini-vscode -- --template vanilla
+
+cd mini-vscode
+
+npm install
+Install Dependencies
+npm install prismjs acorn flexsearch
+Step 2 — Basic Editor Layout
+4
+src/App.js
+import './styles/app.css';
+
+export function App() {
+  return `
+    <div class="app">
+
+      <aside class="sidebar">
+        File Explorer
+      </aside>
+
+      <main class="editor-section">
+
+        <header class="tabs">
+          Tabs
+        </header>
+
+        <section class="editor-container">
+          <textarea id="editor"></textarea>
+        </section>
+
+      </main>
+
+    </div>
+  `;
+}
+src/main.js
+import { App } from './App';
+
+document.querySelector('#app').innerHTML = App();
+src/styles/app.css
+body {
+  margin: 0;
+  background: #1e1e1e;
+  color: white;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #252526;
+}
+
+.editor-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  height: 40px;
+  background: #2d2d2d;
+}
+
+.editor-container {
+  flex: 1;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  background: #1e1e1e;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-size: 16px;
+}
+Step 3 — Syntax Highlighting
+Why?
+
+Editors don’t store colors directly.
+
+They:
+
+Code
+↓
+Tokenizer
+↓
+Tokens
+↓
+Theme Mapping
+↓
+Rendered Colors
+Create Highlight Engine
+src/core/tokenizer/highlight.js
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
+
+export function highlight(code) {
+  return Prism.highlight(
+    code,
+    Prism.languages.javascript,
+    'javascript'
+  );
+}
+Add Highlight View
+<pre id="highlighted"></pre>
+Sync Input
+import { highlight } from './core/tokenizer/highlight';
+
+const editor = document.getElementById('editor');
+const highlighted = document.getElementById('highlighted');
+
+editor.addEventListener('input', () => {
+  highlighted.innerHTML = highlight(editor.value);
+});
+Step 4 — Build Virtual DOM
+Why Virtual DOM?
+
+Without optimization:
+
+Every key press
+→ Entire editor rerenders
+
+Huge performance issue.
+
+Create VNode
+src/core/virtual-dom/vnode.js
+export function createVNode(type, props, children) {
+  return {
+    type,
+    props,
+    children
+  };
+}
+Renderer
+src/core/virtual-dom/render.js
+export function render(vnode) {
+
+  const el = document.createElement(vnode.type);
+
+  for (const key in vnode.props) {
+    el.setAttribute(key, vnode.props[key]);
+  }
+
+  vnode.children.forEach(child => {
+    el.append(child);
+  });
+
+  return el;
+}
+Step 5 — Diffing Algorithm
+Core FAANG Topic
+
+Compare:
+
+Old Tree
+vs
+New Tree
+
+Apply minimal DOM updates.
+
+src/core/diff/diff.js
+export function diff(oldNode, newNode) {
+
+  if (!oldNode) {
+    return newNode;
+  }
+
+  if (oldNode.type !== newNode.type) {
+    return newNode;
+  }
+
+  return oldNode;
+}
+Complexity
+
+Naive diff:
+
+O(n
+3
+)
+
+Optimized heuristic diff:
+
+O(n)
+
+Step 6 — State Management
+Build Your Own Store
+src/store/store.js
+const store = {
+  state: {
+    files: [],
+    activeFile: null
+  },
+
+  listeners: []
+};
+
+export function subscribe(listener) {
+  store.listeners.push(listener);
+}
+
+export function setState(newState) {
+
+  store.state = {
+    ...store.state,
+    ...newState
+  };
+
+  store.listeners.forEach(l => l(store.state));
+}
+
+export function getState() {
+  return store.state;
+}
+Step 7 — Event System
+Pub/Sub Pattern
+src/core/editor/event-bus.js
+class EventBus {
+
+  constructor() {
+    this.events = {};
+  }
+
+  on(event, callback) {
+
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+
+    this.events[event].push(callback);
+  }
+
+  emit(event, data) {
+
+    if (!this.events[event]) return;
+
+    this.events[event].forEach(cb => cb(data));
+  }
+}
+
+export const bus = new EventBus();
+Step 8 — File Explorer
+File Tree Structure
+const files = [
+  {
+    name: 'src',
+    children: [
+      {
+        name: 'App.js'
+      }
+    ]
+  }
+];
+Recursive Renderer
+function renderTree(nodes) {
+
+  return nodes.map(node => {
+
+    if (node.children) {
+      return `
+        <div>
+          📁 ${node.name}
+          ${renderTree(node.children)}
+        </div>
+      `;
+    }
+
+    return `<div>📄 ${node.name}</div>`;
+  }).join('');
+}
+Step 9 — Multi-Tab System
+Tab State
+{
+  openTabs: [],
+  activeTab: null
+}
+Open File Logic
+function openTab(file) {
+
+  const exists = tabs.includes(file);
+
+  if (!exists) {
+    tabs.push(file);
+  }
+
+  activeTab = file;
+}
+Step 10 — Command Palette
+6
+Shortcut
+Ctrl + Shift + P
+Commands
+const commands = [
+  {
+    name: 'Toggle Theme',
+    action: toggleTheme
+  },
+  {
+    name: 'Save File',
+    action: saveFile
+  }
+];
+Fuzzy Search
+function fuzzyMatch(input, target) {
+
+  let i = 0;
+
+  for (const char of target) {
+    if (char === input[i]) {
+      i++;
+    }
+  }
+
+  return i === input.length;
+}
+Step 11 — Search Across Files
+Inverted Index
+word → fileIds
+Example
+const index = {
+  auth: ['file1', 'file2']
+};
+Build Index
+src/services/search-index.js
+export function buildIndex(files) {
+
+  const map = {};
+
+  files.forEach(file => {
+
+    const words = file.content.split(/\s+/);
+
+    words.forEach(word => {
+
+      if (!map[word]) {
+        map[word] = [];
+      }
+
+      map[word].push(file.id);
+    });
+  });
+
+  return map;
+}
+Complexity
+
+Indexing:
+
+O(n)
+
+Search lookup:
+
+O(1)
+
+Regex search:
+
+O(n×m)
+
+Step 12 — AST Parsing
+5
+Why AST?
+
+Needed for:
+
+IntelliSense
+Auto-complete
+Error detection
+Rename symbol
+Refactoring
+Parse Code
+src/core/parser/parser.js
+import * as acorn from 'acorn';
+
+export function parse(code) {
+
+  return acorn.parse(code, {
+    ecmaVersion: 'latest'
+  });
+}
+Step 13 — Web Workers
+Why?
+
+Heavy parsing blocks UI thread.
+
+Move to worker thread.
+
+src/workers/parser.worker.js
+self.onmessage = (e) => {
+
+  const code = e.data;
+
+  const ast = parse(code);
+
+  self.postMessage(ast);
+};
+Main Thread
+const worker = new Worker(
+  '/src/workers/parser.worker.js'
+);
+
+worker.postMessage(code);
+
+worker.onmessage = e => {
+  console.log(e.data);
+};
+Step 14 — Incremental Rendering
+Huge FAANG Topic
+
+Instead of:
+
+Render 100000 lines
+
+Only render:
+
+Visible viewport lines
+Example
+const start = scrollTop / lineHeight;
+const end = start + visibleLines;
+
+Render:
+
+lines.slice(start, end)
+Step 15 — Auto Save
+Debounce
+let timeout;
+
+editor.addEventListener('input', () => {
+
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    saveFile();
+  }, 1000);
+});
+Step 16 — Themes
+Theme Object
+const darkTheme = {
+  background: '#1e1e1e',
+  foreground: '#ffffff'
+};
+Apply Theme
+document.body.style.background =
+  darkTheme.background;
+Step 17 — IndexedDB Persistence
+Save Files
+const request = indexedDB.open('editorDB');
+
+request.onsuccess = () => {
+
+  const db = request.result;
+
+  console.log(db);
+};
+Advanced FAANG Upgrades
+Feature	Why Important
+CRDT Collaboration	Real-time editing
+Operational Transform	Google Docs style sync
+Piece Table	Large file optimization
+Rope Data Structure	Efficient text editing
+WASM Parser	Faster AST
+LSP Integration	IntelliSense
+Plugin System	VS Code extensions
+Incremental Parsing	Faster updates
+How VS Code Handles Large Files
+
+Visual Studio Code uses:
+
+Incremental tokenization
+Piece tree data structure
+Viewport rendering
+Worker threads
+Lazy loading
+Virtual scrolling
+Why Incremental Parsing Matters
+
+Without incremental parsing:
+
+Every key press
+→ Parse whole file
+
+Very slow.
+
+With incremental parsing:
+
+Only changed subtree updates
+
+Huge performance gain.
+
+Important Data Structures
+Feature	DS Used
+File Explorer	Tree
+Search	Inverted Index
+Undo/Redo	Stack
+Tabs	Array + Map
+Editor Buffer	Rope / Piece Table
+Command Palette	Trie
+Event System	Observer Pattern
+Interview Questions & Answers
+1. How would you design a browser-based IDE?
+Answer
+
+Architecture layers:
+
+Rendering layer
+Editor engine
+Parsing engine
+State management
+Worker threads
+Search indexing
+Persistence layer
+
+Use virtualization and incremental rendering for performance.
+
+2. Why does VS Code use Monaco?
+Answer
+
+Monaco Editor provides:
+
+Efficient rendering
+Incremental updates
+AST support
+Virtualization
+Syntax tokenization
+Large file optimizations
+3. Explain incremental rendering.
+Answer
+
+Only changed UI portions rerender instead of whole DOM tree.
+
+Improves:
+
+FPS
+Memory
+Typing latency
+
+Complexity reduced from:
+
+O(n)
+
+to:
+
+O(k)
+
+Where:
+
+n = total nodes
+k = changed nodes
+4. How would you optimize search across files?
+Answer
+
+Use:
+
+Inverted index
+Trie
+Web workers
+Cached token maps
+5. Why use Web Workers?
+Answer
+
+Heavy operations:
+
+Parsing
+Linting
+Indexing
+
+should not block the main thread.
+
+Workers improve UI responsiveness.
+
+6. What is a Piece Table?
+Answer
+
+Efficient text editing structure used in editors.
+
+Instead of modifying large strings directly:
+
+Original buffer remains immutable
+Edits stored separately
+References combined logically
+
+Efficient for huge files.
+
+7. Explain virtual scrolling.
+Answer
+
+Only render visible items.
+
+Used in:
+
+Editors
+Feeds
+Tables
+
+Reduces DOM node count dramatically.
+
+8. How would you implement undo/redo?
+Answer
+
+Use two stacks:
+
+Undo Stack
+Redo Stack
+
+Operations pushed/popped efficiently.
+
+Resume-Worthy Enhancements
+Level 1
+Syntax highlighting
+File explorer
+Tabs
+Level 2
+Command palette
+Search indexing
+Themes
+Level 3
+Incremental rendering
+AST parsing
+Worker threads
+Level 4
+CRDT collaboration
+AI autocomplete
+Plugin system
+LSP support
+FAANG-Level Learning Outcomes
+
+This project teaches:
+
+Frontend system design
+Browser internals
+Rendering engines
+Compiler basics
+Performance optimization
+Search engines
+Data structures
+Concurrency
+Real-time systems
+IDE architecture
+
+This is one of the strongest frontend + system design portfolio projects you can build using pure JavaScript.
+
+
 Important Interview Questions
 1. Why use Trie in command palettes?
 Answer
