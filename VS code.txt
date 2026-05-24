@@ -80,3 +80,44 @@ Execute Command
 
 
 
+| Feature               | Why Important           |
+| --------------------- | ----------------------- |
+| CRDT Collaboration    | Real-time editing       |
+| Operational Transform | Google Docs style sync  |
+| Piece Table           | Large file optimization |
+| Rope Data Structure   | Efficient text editing  |
+| WASM Parser           | Faster AST              |
+| LSP Integration       | IntelliSense            |
+| Plugin System         | VS Code extensions      |
+| Incremental Parsing   | Faster updates          |
+
+
+How VS Code Handles Large Files
+
+Visual Studio Code uses:
+
+Incremental tokenization
+Piece tree data structure
+Viewport rendering
+Worker threads
+Lazy loading
+Virtual scrolling
+Why Incremental Parsing Matters
+
+Without incremental parsing:
+
+Every key press
+→ Parse whole file
+
+Very slow.
+
+With incremental parsing:
+
+Only changed subtree updates
+
+Huge performance gain.
+
+
+
+
+
