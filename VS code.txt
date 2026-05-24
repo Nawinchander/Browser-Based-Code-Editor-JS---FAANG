@@ -129,6 +129,28 @@ Huge performance gain.
 | Event System    | Observer Pattern   |
 
 
+FAANG-Level Placement of
+Incremental Rendering
+Auto Save (Debounce)
+Themes
+IndexedDB Persistence
+
+These are considered core infrastructure features in a browser IDE like:
+
+Visual Studio Code
+Monaco Editor
+
+They should NOT be dumped into one file.
+
+Real-world architecture separates:
+
+Rendering engine
+Services
+Storage layer
+UI theme engine
+Editor lifecycle
+
+
 
 
 
