@@ -1,3 +1,10 @@
+// ex 
+
+const index = {
+  auth: ['file1', 'file2']
+};
+
+
 export function buildIndex(files) {
 
   const map = {};
@@ -18,4 +25,21 @@ export function buildIndex(files) {
 
   return map;
 }
+
+
+// Complexity
+
+// Indexing:
+
+// O(n)
+
+// Search lookup:
+
+// O(1)
+
+// Regex search:
+
+// O(n×m)
+
+
 
