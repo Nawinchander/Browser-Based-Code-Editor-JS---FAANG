@@ -1,0 +1,26 @@
+Why Separate Debounce?
+
+Because debounce is reusable for:
+
+Search
+Resize
+Scroll
+Auto-save
+API requests
+Interview Questions — Debounce
+Q1. What problem does debounce solve?
+Answer
+
+Prevents excessive function execution during frequent events.
+
+Examples:
+
+Typing
+Scrolling
+Search input
+Q2. Difference Between Debounce vs Throttle?
+Debounce	Throttle
+Waits until user stops	Executes at intervals
+Search input	Scroll tracking
+
+
