@@ -1,0 +1,15 @@
+| File                    | Responsibility       |
+| ----------------------- | -------------------- |
+| incremental-renderer.js | Rendering logic      |
+| viewport-manager.js     | Scroll calculations  |
+| line-cache.js           | Cache rendered lines |
+| render-engine.js        | DOM updates          |
+
+
+This mirrors how:
+
+Monaco Editor
+CodeMirror
+
+separate rendering infrastructure.
+
