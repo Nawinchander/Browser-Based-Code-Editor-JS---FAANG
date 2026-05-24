@@ -51,3 +51,32 @@ Theme Mapping
 ↓
 Rendered Colors
 
+
+Ctrl + Shift + P
+        ↓
+Open Palette
+        ↓
+Input Query
+        ↓
+Fuzzy Search
+        ↓
+Ranking
+        ↓
+Render Results
+        ↓
+Execute Command
+
+
+
+
+| Optimization        | Why                      |
+| ------------------- | ------------------------ |
+| Debouncing          | Avoid excessive searches |
+| Trie Indexing       | Faster lookup            |
+| Web Workers         | Non-blocking search      |
+| Ranking Cache       | Faster repeated searches |
+| Lazy Rendering      | Better FPS               |
+| Keyboard Navigation | Accessibility            |
+
+
+
