@@ -1,0 +1,59 @@
+A FAANG-level editor must include:
+
+Unit Testing
+Integration Testing
+Component Testing
+E2E Testing
+Performance Testing
+Load Testing
+Memory Leak Testing
+Accessibility Testing
+
+Real systems like:
+
+mini-vscode/
+│
+├── tests/
+│   ├── unit/
+│   │   ├── renderer/
+│   │   ├── fuzzy-search/
+│   │   ├── debounce/
+│   │   ├── reducers/
+│   │   └── services/
+│   │
+│   ├── integration/
+│   │   ├── editor-flow/
+│   │   ├── autosave/
+│   │   └── persistence/
+│   │
+│   ├── e2e/
+│   │   ├── command-palette/
+│   │   ├── tabs/
+│   │   └── editor/
+│   │
+│   ├── performance/
+│   │   ├── large-files/
+│   │   ├── rendering/
+│   │   └── search/
+│   │
+│   ├── accessibility/
+│   │   └── keyboard-navigation/
+│   │
+│   └── load/
+│       ├── typing/
+│       └── indexing/
+│
+├── playwright.config.js
+├── vitest.config.js
+└── package.json
+
+| Test Type     | Tool             |
+| ------------- | ---------------- |
+| Unit Testing  | Vitest           |
+| Integration   | Vitest           |
+| E2E           | Playwright       |
+| Performance   | Lighthouse       |
+| Load          | Custom Benchmark |
+| Accessibility | axe-core         |
+
+
