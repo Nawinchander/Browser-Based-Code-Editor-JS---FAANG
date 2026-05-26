@@ -1,0 +1,10 @@
+What Is Unit Testing?
+
+Testing isolated functions independently.
+
+Examples:
+
+Fuzzy search
+Reducers
+Debounce
+Renderer
