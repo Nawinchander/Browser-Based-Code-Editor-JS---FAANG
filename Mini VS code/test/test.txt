@@ -37,3 +37,23 @@ Isolated	Real interactions
 Fast	Slightly slower
 
 
+Why E2E Matters?
+
+Only E2E verifies:
+
+Browser behavior
+Real keyboard input
+Rendering
+Full workflows
+Interview Questions — E2E
+Q1. Why not rely only on unit tests?
+Answer
+
+Unit tests cannot validate:
+
+Real browser rendering
+DOM events
+Keyboard interactions
+User workflows
+
+
