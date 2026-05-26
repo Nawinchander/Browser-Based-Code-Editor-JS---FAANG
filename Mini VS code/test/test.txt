@@ -22,3 +22,18 @@ Reliable
 
 
 
+Why Integration Testing?
+
+Unit tests alone cannot verify:
+
+Service communication
+Data flow
+Event chaining
+Interview Questions — Integration Testing
+Q1. Difference between unit and integration testing?
+Unit	Integration
+Single function	Multiple modules
+Isolated	Real interactions
+Fast	Slightly slower
+
+
