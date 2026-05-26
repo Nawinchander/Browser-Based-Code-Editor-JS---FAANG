@@ -1,0 +1,8 @@
+Why Separate Persistence Layer?
+
+Because later you may support:
+
+Cloud sync
+GitHub sync
+CRDT collaboration
+Multi-device storage
