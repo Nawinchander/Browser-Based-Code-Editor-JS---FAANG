@@ -59,3 +59,17 @@ Persistence Service
 IndexedDB Storage
 
 
+
+
+| Feature               | Engineering Concept     |
+| --------------------- | ----------------------- |
+| Incremental Rendering | Rendering optimization  |
+| Debounce              | Event optimization      |
+| Themes                | Global UI state         |
+| IndexedDB             | Offline persistence     |
+| Virtualization        | Performance engineering |
+| Persistence Layer     | System design           |
+
+
+
+
