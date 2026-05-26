@@ -20,3 +20,42 @@ With viewport rendering:
 
 O(v)
 
+Interview Questions — IndexedDB
+Q1. Why use IndexedDB instead of LocalStorage?
+Answer
+
+IndexedDB supports:
+
+Async operations
+Large storage
+Transactions
+Structured objects
+
+LocalStorage is synchronous and blocks UI.
+
+Q2. Why separate persistence service from DB service?
+Answer
+
+DB service handles low-level storage.
+
+Persistence service handles:
+
+Business rules
+Syncing
+Autosave orchestration
+Conflict handling
+
+
+Editor Input
+    ↓
+Incremental Renderer
+    ↓
+Visible DOM Updates
+    ↓
+Debounced Auto Save
+    ↓
+Persistence Service
+    ↓
+IndexedDB Storage
+
+
