@@ -1,0 +1,24 @@
+Interview Questions — Unit Testing
+Q1. Why unit test reducers?
+Answer
+
+Reducers contain business logic.
+
+Bugs in reducers affect:
+
+State consistency
+UI rendering
+Synchronization
+Q2. Why mock timers in debounce tests?
+Answer
+
+Real timers slow tests.
+
+Fake timers make tests:
+
+Deterministic
+Faster
+Reliable
+
+
+
