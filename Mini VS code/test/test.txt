@@ -57,3 +57,12 @@ Keyboard interactions
 User workflows
 
 
+Why E2E Matters?
+
+Only E2E verifies:
+
+Browser behavior
+Real keyboard input
+Rendering
+Full workflows
+

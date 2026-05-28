@@ -1,0 +1,10 @@
+Interview Questions — E2E
+Q1. Why not rely only on unit tests?
+Answer
+
+Unit tests cannot validate:
+
+Real browser rendering
+DOM events
+Keyboard interactions
+User workflows
