@@ -79,3 +79,12 @@ Heap growth
 Performance degradation
 
 
+
+Why Important?
+
+Editors must support:
+
+Keyboard-only users
+Screen readers
+WCAG compliance
+
