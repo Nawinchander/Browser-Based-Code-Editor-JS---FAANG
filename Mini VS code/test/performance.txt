@@ -1,0 +1,9 @@
+What Is It?
+
+Measure:
+
+Render speed
+FPS
+Typing latency
+Search speed
+
