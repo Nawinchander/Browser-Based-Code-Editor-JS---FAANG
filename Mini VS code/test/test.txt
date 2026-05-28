@@ -70,4 +70,12 @@ What Is Load Testing?
 
 Testing system under heavy workload.
 
+Why?
+
+Detects:
+
+Memory leaks
+Heap growth
+Performance degradation
+
 
