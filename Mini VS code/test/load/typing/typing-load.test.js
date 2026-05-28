@@ -19,3 +19,7 @@ it('handles rapid typing', () => {
     .toBeLessThan(1000);
 });
 
+
+// Why Important?
+
+// Editors process thousands of events rapidly.
