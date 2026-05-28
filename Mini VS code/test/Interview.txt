@@ -8,3 +8,21 @@ Real browser rendering
 DOM events
 Keyboard interactions
 User workflows
+
+
+Why Important?
+
+Performance is critical for IDEs.
+
+Even 100ms typing lag feels broken.
+
+Interview Questions — Performance Testing
+Q1. What metrics matter in editors?
+Answer
+Typing latency
+FPS
+Memory usage
+Search latency
+Parse time
+
+
