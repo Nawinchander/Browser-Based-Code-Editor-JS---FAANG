@@ -72,4 +72,70 @@ IndexedDB Storage
 
 
 
+1. Why multiple testing layers?
+Answer
 
+Different bugs occur at different layers.
+
+Example:
+
+Unit → logic bugs
+Integration → communication bugs
+E2E → workflow bugs
+2. Why performance testing matters in editors?
+Answer
+
+Editors handle:
+
+Huge files
+Rapid typing
+Complex rendering
+
+Poor performance directly impacts usability.
+
+3. Why E2E tests are expensive?
+Answer
+
+They:
+
+Launch browsers
+Simulate real users
+Are slower
+More brittle
+
+But they validate real workflows.
+
+4. Why mock external dependencies?
+Answer
+
+Mocks isolate logic and improve:
+
+Speed
+Reliability
+Determinism
+5. Why soak testing matters?
+Answer
+
+Some issues only appear over time:
+
+Memory leaks
+Event listener buildup
+Heap fragmentation
+FAANG-Level Learning Outcomes
+
+This testing architecture teaches:
+
+Test pyramids
+Browser automation
+Performance engineering
+CI/CD pipelines
+Accessibility engineering
+Load engineering
+Reliability engineering
+
+These are the same testing concepts used by:
+
+Google
+Meta
+Microsoft
+Netflix
