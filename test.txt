@@ -57,3 +57,13 @@ mini-vscode/
 | Accessibility | axe-core         |
 
 
+| Test          | Purpose            |
+| ------------- | ------------------ |
+| Unit          | Logic correctness  |
+| Integration   | Module interaction |
+| Component     | UI validation      |
+| E2E           | User workflow      |
+| Performance   | Speed              |
+| Load          | Stress             |
+| Soak          | Stability          |
+| Accessibility | WCAG               |
